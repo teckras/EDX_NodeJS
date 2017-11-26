@@ -1,7 +1,6 @@
 const csv = require('csvtojson')
 const fs = require('fs')
 const path = require('path')
-const json = require('json')
 
 let filepath = path.join(__dirname, "Data", "customer-data.csv")
 
@@ -19,7 +18,7 @@ const convertFile = () =>{
     })
     .on('done',()=>{
         console.log('end')
-        fs.writeFileSync(path.join(__dirname, "customer-data.json"), JSON.stringify(buff.items,null,4))
+        fs.writeFileSync(path.join(__dirname, "customer-data.json"), JSON.stringify(buff.items,null,2).replace(/\n/g, '\r\n'))
     })
 }
 
